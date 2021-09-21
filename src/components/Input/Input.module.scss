@@ -1,0 +1,22 @@
+.Input {
+    width: 100%;
+    font-size: var(--fontM);
+    font-family: var(--font);
+    color: var(--black);
+    box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.5);
+    border: none;
+    ::placeholder {
+        font-size: var(--fontM);
+    }
+    //size prop
+    &.small {
+        width: 50%;
+    }
+    &.large {
+        width: 100%;
+        padding: 3rem 1rem;
+    }
+    &.hasMargin{
+        margin: 1rem 0;
+    }
+}

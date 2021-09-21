@@ -1,0 +1,26 @@
+.Button {
+    background: var(--primary-btn);
+    font-family: var(--font);
+    border: 2px solid var(--color-principal);
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    transition: 300ms all;
+    display: flex;
+    margin: 6rem auto;
+    font-size: var(--fontM);
+    &:hover {
+        background: var(--primary-btnhover);
+        transition: 300ms all;
+    }
+    &:active,
+    &:focus {
+        outline: 0;
+    }
+    &:active {
+        transform: scale(0.96);
+        transition: 300ms all;
+    }
+}

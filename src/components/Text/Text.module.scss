@@ -1,0 +1,27 @@
+@import "./../../utils/styles/variables.scss";
+@import "./../../utils/styles/mixins.scss";
+
+.Text {
+  font-weight: 500;
+  color: var(--main-white);
+  margin: 0;
+  margin-bottom: 2rem;
+  &.normal {
+    font-weight: 300;
+  }
+  &.semibold {
+    font-weight: 600;
+  }
+  &.hasPadding {
+    @include container();
+  }
+  &.small {
+    font-size: var(--fontS);
+  }
+  &.medium {
+    font-size: var(--fontM);
+  }
+  &.large {
+    font-size: var(--fontL);
+  }
+}

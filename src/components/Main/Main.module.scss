@@ -1,0 +1,27 @@
+@import "./../../utils/styles/animations.scss";
+@import "./../../utils/styles/media.scss";
+@import "./../../utils/styles/mixins.scss";
+
+.Main {
+  -webkit-animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.5s ease;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  position: relative;
+  overflow: visible;
+  @include container();
+  @include respond(phone){
+    margin: 1.5rem;
+    margin-top: 6rem;
+    padding: 0;
+    h2{
+      font-size: 1.3rem;
+    }
+  }
+  margin-top: 4rem;
+  .error{
+    color: var(--red);
+  }
+}
