@@ -1,47 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
+
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Text from '../../components/Text/Text';
-import { isMutant } from './../../store/actions';
-import { useDispatch, useSelector } from "react-redux";
+
+import { isMutant, setError } from './../../store/actions';
 
 const Detector = () => {
     const [value, setValue] = useState('')
     const dispatch = useDispatch();
-    const state = useSelector((state) => state.mutant);
 
     const submit = (e) => {
         e.preventDefault();
         dispatch(isMutant(value))
     }
-    console.log(state)
-    return (
-        <>
-            {!state.isMutante ?
-                <form>
-                    <Text priority={1} size="large" weight={"semibold"}>
-                        Ingresá la secuencia de ADN
-                    </Text>
-                    <Input
-                        placeholder={'ATGCGA, AGGCTA, CCCAGT, TCACTG, TCACTG, TATAGA'}
-                        size='large'
-                        handleChange={setValue}
-                    />
-                    <Button onClick={submit}>Analizar</Button>
-                </form>
-                :
-                <>
-                    <Text priority={1} size="large" weight={"semibold"}>
-                        MUTANTE DETECTADO
-                    </Text>
-                    <Button onClick={() => dispatch(dispatch({
-                        type: 'GET_MUTANTE',
-                        payload: false
-                    }))}>Volver a analizar</Button>
-                </>
 
-            }
-        </>
+    useEffect(() => {
+        return () => {
+            dispatch(setError({
+                error: false,
+            }))
+        }
+    }, [])
+
+    return (
+        <form>
+            <Text priority={1} size="large" weight={"semibold"}>
+                Ingresá la secuencia de ADN
+            </Text>
+            <Input
+                placeholder='ATGCGA, AGGCTA, CCCAGT, TCACTG, TCACTG, TATAGA'
+                size='large'
+                handleChange={setValue}
+            />
+            <Button onClick={submit}>Analizar</Button>
+        </form>
     )
 }
 
