@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Text from "../Text/Text";
 import styles from "./Input.module.scss";
 
 const Input = ({
@@ -13,20 +14,20 @@ const Input = ({
     ...props
 }) => {
     return (
-        <>
+        <div className={`${classes || ""}  ${type === "radio" ? styles['Input--radioContainer'] : ''} ${styles['Input--container']}`}>
             {label &&
-                <label className={styles.Label}>{label}</label>
+                <Text tag="label" weight={'normal'} className={styles.Label}>{label}</Text>
             }
             <input
-                className={`${styles.Input} ${styles[size]} ${classes || ""} ${hasMargin ? styles.hasMargin : ""}`}
+                className={`${styles.Input} ${styles[size]} ${hasMargin ? styles.hasMargin : ""}`}
                 {...props}
                 placeholder={placeholder}
                 type={type}
-                onChange={(e) => handleChange(e.target.value)}
+                onChange={(e) => handleChange && handleChange(e.target.value)}
             >
                 {children}
             </input>
-        </>
+        </div>
     );
 };
 

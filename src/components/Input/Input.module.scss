@@ -5,18 +5,53 @@
     color: var(--black);
     box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.5);
     border: none;
+    &--container {
+        display: flex;
+        flex-direction: column;
+        .Label {
+            font-weight: 300;
+            margin-bottom: .5rem;
+        }
+    }
+
     ::placeholder {
         font-size: var(--fontM);
     }
     //size prop
     &.small {
         width: 50%;
+        padding: 0.8rem;
     }
     &.large {
         width: 100%;
         padding: 3rem 1rem;
     }
-    &.hasMargin{
+    &.hasMargin {
         margin: 1rem 0;
+    }
+    //radio
+    &--radioContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-right: 3rem;
+        align-items: center;
+    }
+    &[type="radio"] {
+        box-shadow: none;
+        width: .8rem;
+        height: .8rem;
+        padding: 0;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid var(--primary-btnhover);
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        &:checked {
+            background-color: var(--primary-btnhover);
+        }
     }
 }

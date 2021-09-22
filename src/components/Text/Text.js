@@ -6,7 +6,7 @@ const Text = ({
   tag,
   children,
   size = "medium",
-  weight = "",
+  weight = 600,
   opacity = 1,
   align = "left",
   hasPadding,
@@ -17,7 +17,7 @@ const Text = ({
   return (
     <CustomTag
       className={`${styles.Text} ${styles[size]} ${styles[weight]} ${classes || ""} ${hasPadding ? styles.hasPadding : ""}`}
-      style={{ opacity: opacity || 1, textAlign: align }}
+      style={{ opacity: opacity || 1, textAlign: align, fontWeight: weight}}
       {...props}
     >
       {children}

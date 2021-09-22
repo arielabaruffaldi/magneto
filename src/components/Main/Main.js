@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Loader from "../Loader/Loader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Main.module.scss";
+import Success from "../Success/Success";
+import { useHistory } from 'react-router-dom'
+import { restartGeneralState } from './../../store/actions';
 
 const Main = (props) => {
+  const history = useHistory()
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return history.listen((location) => {
+      console.log(`You changed the page to: ${location.pathname}`)
+      dispatch(restartGeneralState())
+    })
+  }, [history])
+
   const state = useSelector((state) => state.general);
-  console.log("state", state)
   return (
     <main className={styles.Main}>
-      {props.children}
-      {state.loading ? <Loader /> : null}
+      {state.loading && <Loader />}
       {state.error ? <p className={styles['error']}>{state.errorMessage}</p> : null}
+      {state.success ? <Success /> : props.children}
     </main>
   );
 };
