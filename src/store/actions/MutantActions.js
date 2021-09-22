@@ -1,6 +1,6 @@
 import * as actionTypes from "../types";
 import { http } from "./../../utils/axios";
-import { setLoading, setError } from './GeneralActions';
+import { setLoading, setError, setSuccess } from './GeneralActions';
 
 export const isMutant = (body) => async (
     dispatch
@@ -10,20 +10,39 @@ export const isMutant = (body) => async (
     }))
     dispatch(setLoading(true))
     const parsedData = body.replace(/ /g, "").split(',')
-    
     try {
-       await http.post(`/mutant/`, { dna: parsedData });
+        await http.post(`/mutant/`, { dna: parsedData });
+        dispatch(setLoading(false))
         dispatch({
             type: actionTypes.GET_MUTANTE,
             payload: true
         })
-        dispatch(setLoading(false))
+        dispatch(setSuccess({
+            success: true,
+            successMessage: "MUTANTE DETECTADO",
+            successButton: "Volver a analizar"
+        }))
     } catch (err) {
         dispatch(setLoading(false))
         dispatch(setError({
             error: true,
-            errorMessage: "Ocurrió un error, inténtelo nuevamente"
+            errorMessage: "El mutante no existe, inténtelo nuevamente"
         }))
     }
 
 }
+
+export const setMutant = (mutant) => async (
+    dispatch
+) => {
+    dispatch({
+        type: actionTypes.SET_MUTANT,
+        payload: mutant
+    })
+    dispatch(setSuccess({
+        success: true,
+        successMessage: "MUTANTE CARGADO EXITOSAMENTE",
+        successButton: "Cargar otro"
+    }))
+}
+

@@ -13,3 +13,18 @@ export const setError = (value) => {
         payload: value,
     };
 };
+
+export const setSuccess = (value) => {
+    console.log("entro")
+    return {
+        type: actionTypes.SUCCESS,
+        payload: value,
+    };
+};
+
+export const restartGeneralState = () => {
+    return {
+        type: actionTypes.RESTART,
+        payload: false,
+    };
+}
