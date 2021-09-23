@@ -1,3 +1,5 @@
+@import "./../../utils/styles/media.scss";
+
 .Input {
     width: 100%;
     font-size: var(--fontM);
@@ -21,6 +23,9 @@
     &.small {
         width: 50%;
         padding: 0.8rem;
+        @include respond(phone){
+            width: 100%;
+        }
     }
     &.large {
         width: 100%;
@@ -35,6 +40,11 @@
         flex-direction: column-reverse;
         margin-right: 3rem;
         align-items: center;
+        flex-wrap: wrap;
+
+        @include respond(phone){
+            margin: .5rem;
+        }
     }
     &[type="radio"] {
         box-shadow: none;

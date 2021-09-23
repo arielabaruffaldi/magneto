@@ -6,3 +6,9 @@
 .Input {
     margin-bottom: 2rem;
 }
+
+.Mutants-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+}

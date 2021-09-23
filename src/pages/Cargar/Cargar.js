@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
+import { addMutant, setError } from './../../store/actions';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Text from '../../components/Text/Text';
-
 import styles from './Cargar.module.scss';
-import { setMutant, setError } from './../../store/actions';
-import { useDispatch, useSelector } from "react-redux";
 
 
 const Cargar = () => {
@@ -26,11 +26,25 @@ const Cargar = () => {
         })
     }
 
+    const validate = () => {
+        if (data.nombre && data.superpoder && data.nivel) {
+            return true
+        }
+        return false
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
+        if (!validate()) {
+            dispatch(setError({
+                error: true,
+                errorMessage: `Los campos marcados con * son obligatorios`
+            }))
+            return
+        }
         const mutantExists = state.myMutants.find(mutant => mutant.nombre === data.nombre)
         if (!mutantExists) {
-            dispatch(setMutant(data))
+            dispatch(addMutant(data))
             resetData()
         } else {
             dispatch(setError({

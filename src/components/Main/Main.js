@@ -12,7 +12,6 @@ const Main = (props) => {
 
   useEffect(() => {
     return history.listen((location) => {
-      console.log(`You changed the page to: ${location.pathname}`)
       dispatch(restartGeneralState())
     })
   }, [history])

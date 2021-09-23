@@ -1,6 +1,11 @@
+@import "./../../utils/styles/media.scss";
+
 .radio--container {
+    flex-wrap: wrap;
     display: flex;
     margin-top: 1rem;
+    @include respond(phone) {
+    }
 }
 
 .Input {
