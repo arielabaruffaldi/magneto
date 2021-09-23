@@ -17,7 +17,7 @@ function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   return (
     <BrowserRouter>
-      {!isMobile ? <Nav menu={menu} /> : <NavMobile />}
+      {!isMobile ? <Nav menu={menu} /> : <NavMobile menu={menu} />}
       <Main>
         <Switch>
           <Route exact path="/detector">

@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import styles from './NavMobile.module.scss';
 
 
-const NavMobile = ({menu}) => {
+const NavMobile = ({ menu }) => {
+    console.log(menu)
     const [isOpen, setIsOpen] = useState(false);
     const [scrollingUp, setScrollingUp] = useState(false);
     const [scrollPosition, setSrollPosition] = useState(0);
