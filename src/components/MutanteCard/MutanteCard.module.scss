@@ -1,0 +1,47 @@
+.MutanteCard {
+    &--container {
+        border: 1px solid var(--black);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 10rem;
+        position: relative;
+        justify-content: center;
+    }
+    &--header {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        top: 0;
+        position: absolute;
+        h2 {
+            margin: 0.5rem;
+            font-size: var(--fontM);
+            color: var(--darkGray);
+            text-transform: capitalize;
+        }
+    }
+    &--level {
+        position: absolute;
+        left: 0;
+        padding: 0.5rem;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        width: 2.3rem;
+        height: 2.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &--superpoder {
+        color: var(--blue);
+        text-transform: capitalize;
+    }
+    &--footer{
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: .5rem;
+    }
+}
