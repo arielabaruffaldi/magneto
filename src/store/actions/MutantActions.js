@@ -1,6 +1,6 @@
 import * as actionTypes from "../types";
 import { http } from "./../../utils/axios";
-import { setLoading, setError, setSuccess } from './GeneralActions';
+import { setLoading, setError, setSuccess, restartGeneralState } from './GeneralActions';
 
 export const isMutant = (body) => async (
     dispatch
@@ -32,11 +32,11 @@ export const isMutant = (body) => async (
 
 }
 
-export const setMutant = (mutant) => async (
+export const addMutant = (mutant) => async (
     dispatch
 ) => {
     dispatch({
-        type: actionTypes.SET_MUTANT,
+        type: actionTypes.ADD_MUTANT,
         payload: mutant
     })
     dispatch(setSuccess({
@@ -44,5 +44,35 @@ export const setMutant = (mutant) => async (
         successMessage: "MUTANTE CARGADO EXITOSAMENTE",
         successButton: "Cargar otro"
     }))
+    dispatch(setError({
+        error: false
+    }))
+
 }
 
+export const removeMutant = (value) => async (
+    dispatch
+) => {
+    dispatch({
+        type: actionTypes.REMOVE_MUTANT,
+        payload: value.nombre
+    })
+}
+
+export const addToFavorite = (value) => async (
+    dispatch
+) => {
+    dispatch({
+        type: actionTypes.ADD_FAVORITE,
+        payload: value
+    })
+}
+
+export const removeFav = (value) => async (
+    dispatch
+) => {
+    dispatch({
+        type: actionTypes.REMOVE_FAVORITE,
+        payload: value.nombre
+    })
+}

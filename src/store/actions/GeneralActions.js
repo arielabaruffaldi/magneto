@@ -15,7 +15,6 @@ export const setError = (value) => {
 };
 
 export const setSuccess = (value) => {
-    console.log("entro")
     return {
         type: actionTypes.SUCCESS,
         payload: value,

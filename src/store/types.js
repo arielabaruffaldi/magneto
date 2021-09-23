@@ -6,5 +6,8 @@ export const RESTART = "RESTART";
 
 // PLANET
 export const GET_MUTANTE = "GET_MUTANTE";
-export const SET_MUTANT = "SET_MUTANT";
+export const ADD_MUTANT = "ADD_MUTANT";
+export const REMOVE_MUTANT = "REMOVE_MUTANT";
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
